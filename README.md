@@ -1,10 +1,14 @@
 # ML-Algorithms
 
-Example codes for ML models:   
+Example codes for ML algorithms:   
 1. Deep Neural Network   
 2. Xgboost   
 3. Reinforcement learning (VGG)
 4. SVM
+5. Ridge and lasso
+6. Missing data imputation (median, knn)
+7. kNN classification/regression
+8. Feature selection and feature engineering
 
 ## EEG_MEG_feature engineering.ipynb   
    
@@ -38,6 +42,8 @@ A deep neural net was built wherein each image started with a VGG16 layer  and â
 
 ## Protein sequencing classification
 
+Protein_sequencing.ipynb
+
 Some of the important libraries used:
 Library Xgboost - XGBClassifier
 The explanatory variable in this case are mutations described by four letters (amino acids). The training data and test data were read into corresponding pandas dataframes. 
@@ -46,3 +52,17 @@ First a Neural Network model was adapted, where the feature variables were fed i
 While downsampling reduced the score drastically, upsampling improved the performance of the model only marginally. 
 Next, an f1-loss function was defined manually. The NN model was optimized over this loss function and the parameters were tuned again. The score improved only to 0.886. 
 Alternatively, the second algorithm considered was a decision tree model using XGBClassifier from the Xgboost library in python. The one hot encoded feature variables were fed into the XGBClassifier. The parameters  (min_depth, max_child, learning rates) were tuned by grid search CV in multiple steps by optimizing over the f1 score. The model finally produced an average test f1-score of 0.894 on KFold CV and a validation score of 0.901 for f1 loss. 
+
+##  Patient status classification using hourly data
+
+Patient_status_cclassifiction.ipynb
+
+Some of the important libraries used:
+Library Sklearn - KNNImputer, SVC,Ridge
+Library Xgboost - XGBClassifier,XGBRegressor
+
+First, the hourly data (consisting of 12 data points) for each patient for each feature were converted as individual features (34*12 = 408 +age = 409 features per patient). Next, excluding the four features (RRate, ABPm, SpO2,Heartrate) that correspond to the predictions to be made for subtask 3,the other features were imputed using the median/maximum/minimum values(across the 12 hours) and the original hourly data was removed.  The resulting 81 features per patient were then imputed using the KNNImputer to fill the missing NAs. A SVC model was trained on these features (81 features without NAs) to predict the labels for subtask 1 and 2 and a ridge regression model was fit for subtask 3. The parameters for the models (kernel, regularization) were tuned by gridsearch, individually for each target variable. As a next step the features for classification and regression were tuned to remove any noise variables. But that was not very effective. 
+Alternatively, a decision tree based model was trained on the same features (81 features) using XGBClassifier. The kNN imputation was removed since the Xgboost model better handled NAs (81 features with NAs). Hyper parameters like (min_child, max_depth) were tuned by grid search. XGBRegressor was implemented for subtask 3 and was tuned for the learning rates. To remove the noise variables, feature importance scores were analysed.  But on removing features the score went down indicating loss of information too. 
+Next, the same model was trained  using all of the raw hourly data for all the features (409 features for each patient with NAs). The score improved well and reached 0.77. 
+Finally, the model was trained on a total of 445 features per patient (the imputed features (max/median/min imputation mentioned initially) and the raw hourly data(409 features ) which produced a score of 0.78.
+
