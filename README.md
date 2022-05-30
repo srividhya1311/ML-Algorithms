@@ -1,6 +1,5 @@
 # ML-Algorithms
 Codes developed by self on multiple ML algorithms (as listed below) including NN, gradient boosted trees and transfer learning
-
 Example codes for ML algorithms:   
 1. Deep Neural Network   
 2. Xgboost   
