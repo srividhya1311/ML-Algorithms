@@ -1,9 +1,11 @@
 # ML-Algorithms
 
+Codes developed by self on multiple ML algorithms (as listed below) including NN, gradient boosted trees and transfer learning
+
 Example codes for ML algorithms:   
 1. Deep Neural Network   
 2. Xgboost   
-3. Reinforcement learning (VGG)
+3. Transfer learning (VGG)
 4. SVM
 5. Ridge and lasso
 6. Missing data imputation (median, knn)
