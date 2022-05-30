@@ -1,7 +1,8 @@
 # ML-Algorithms
 
 
-EEG_MEG_feature engineering.ipynb
+EEG_MEG_feature engineering.ipynb   
+   
 Feature Engineering and classification using EEG and MEG time series data
  
 The time,frequency domain features had to be extracted. 
