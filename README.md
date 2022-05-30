@@ -1,5 +1,10 @@
 # ML-Algorithms
 
+Example codes for ML models:   
+1. Deep Neural Network   
+2. Xgboost   
+3. Reinforcement learning (VGG)
+4. SVM
 
 ## EEG_MEG_feature engineering.ipynb   
    
