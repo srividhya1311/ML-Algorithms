@@ -1,7 +1,7 @@
 # ML-Algorithms
 
 
-EEG_MEG_feature engineering.ipynb   
+## EEG_MEG_feature engineering.ipynb   
    
 Feature Engineering and classification using EEG and MEG time series data
  
@@ -20,7 +20,7 @@ Next, the process was repeated to the best 30 features, the hyperparameters (C a
 The final validation in the leave one subject out case was 0.941 for balanced accuracy which was much better compared to the first run (0.9). 
 
 
-Siamese_network_Image_classification.ipynb
+## Siamese_network_Image_classification.ipynb
 
 Image classification based on taste of food in the picture
 
